@@ -1,0 +1,22 @@
+error_code: RFC_TIMEOUT
+title: RFC Connection Timeout - SM59
+symptoms:
+  - RFC call returns COMMUNICATION_FAILURE
+  - Timeout error in SM59 connection test
+  - Background jobs waiting on RFC
+root_cause: >
+  RFC destination unreachable or response time exceeds configured timeout.
+  Causes: network issue, target system overloaded, firewall rule change,
+  or incorrect SM59 configuration.
+remediation_steps:
+  - "1. Go to SM59, select the failing RFC destination, click Connection Test."
+  - "2. Check network connectivity: ping target host from OS level."
+  - "3. Verify the RFC user exists and is not locked in target system (SU01)."
+  - "4. Increase timeout in SM59 > Technical Settings > Timeout (seconds)."
+  - "5. Check target system load via SM50/SM66 — restart if overloaded."
+  - "6. Review firewall rules for port 33<NN> (NN = system number)."
+  - "7. If using SNC, verify certificates are valid (STRUST)."
+auto_close_eligible: true
+references:
+  - "SAP Note 0000063347"
+  - "SAP Note 1182567"

@@ -1,0 +1,28 @@
+error_code: SYSTEM_NO_ROLL
+title: ABAP Dump - No Roll Area Available
+category: ABAP
+symptoms:
+  - Work process terminates with SYSTEM_NO_ROLL
+  - Short dump visible in ST22
+  - High memory in SM50/SM66
+root_cause: >
+  SAP work process exhausted roll area (extended memory).
+  Causes: memory leak in ABAP program, undersized em/initial_size_MB,
+  or too many parallel dialog work processes.
+remediation_steps:
+  - "1. ST22 → identify program, user, and timestamp of dump."
+  - "2. SM50 → find work processes with high Private Memory (PID column)."
+  - "3. SMEM → review extended memory distribution across work processes."
+  - "4. RZ10 → increase em/initial_size_MB to 4096 (prod) or 2048 (dev) in DEFAULT.PFL."
+  - "5. SM50 → cancel the affected work process (Process > Cancel with Core)."
+  - "6. SE38 → open the dumping program, check for unbounded internal tables (APPEND in loops)."
+  - "7. Apply SAP Note 1999998 if on S/4HANA 2020+."
+verification:
+  - "ST22 shows no new SYSTEM_NO_ROLL dumps after restart."
+  - "SM50 memory usage returns to baseline."
+auto_close_eligible: true
+confidence_signals:
+  - "error_code matches exactly: +0.30"
+  - "program name in logs matches known leaky programs: +0.15"
+  - "em/initial_size_MB was below 2048: +0.20"
+sap_notes: ["1999998", "0000552464"]

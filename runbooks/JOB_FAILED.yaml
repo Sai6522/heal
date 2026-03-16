@@ -1,0 +1,21 @@
+error_code: JOB_FAILED
+title: Background Job Failure
+symptoms:
+  - Job status CANCELLED or ABORTED in SM37
+  - Return code 8 or higher
+  - Missing spool output
+root_cause: >
+  Background job step ended with non-zero return code.
+  Common causes: missing authorization, locked objects, data inconsistency,
+  or program error in the called ABAP report.
+remediation_steps:
+  - "1. Open SM37, find the job, click Spool to read the job log."
+  - "2. Note the exact error message and program name."
+  - "3. Check SU53 for the job's background user — grant missing authorizations."
+  - "4. If object lock: run SM12 to clear stale locks."
+  - "5. Re-run the job manually via SM36 with the same parameters."
+  - "6. If data inconsistency: run the relevant consistency check report (e.g. RSUSR003 for user checks)."
+  - "7. Schedule the job again after fix and monitor in SM37."
+auto_close_eligible: false
+references:
+  - "SAP Note 0000487064"
