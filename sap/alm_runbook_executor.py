@@ -26,9 +26,11 @@ from sap.alm_client import _headers, ALM_BASE
 # Map your SAP Cloud ALM automation runbook IDs here.
 # Find these in SAP Cloud ALM → Intelligent Event Processing → Automation.
 ALM_RUNBOOK_MAP = {
-    "SYSTEM_NO_ROLL": os.getenv("ALM_RUNBOOK_SYSTEM_NO_ROLL", "rb-system-no-roll-fix"),
-    "RFC_TIMEOUT":    os.getenv("ALM_RUNBOOK_RFC_TIMEOUT",    "rb-rfc-timeout-fix"),
-    "JOB_FAILED":     os.getenv("ALM_RUNBOOK_JOB_FAILED",     "rb-job-failed-fix"),
+    "SYSTEM_NO_ROLL":    os.getenv("ALM_RUNBOOK_SYSTEM_NO_ROLL",    "rb-system-no-roll-fix"),
+    "RFC_TIMEOUT":       os.getenv("ALM_RUNBOOK_RFC_TIMEOUT",       "rb-rfc-timeout-fix"),
+    "JOB_FAILED":        os.getenv("ALM_RUNBOOK_JOB_FAILED",        "rb-job-failed-fix"),
+    "IDOC_ERROR":        os.getenv("ALM_RUNBOOK_IDOC_ERROR",        "rb-idoc-error-fix"),
+    "INTERFACE_TIMEOUT": os.getenv("ALM_RUNBOOK_INTERFACE_TIMEOUT", "rb-interface-timeout-fix"),
 }
 
 POLL_INTERVAL = 5   # seconds between status checks

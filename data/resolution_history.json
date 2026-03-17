@@ -1,0 +1,253 @@
+[
+  {
+    "incident_id": "INC-001",
+    "error_code": "SYSTEM_NO_ROLL",
+    "steps": [
+      "1. ST22 \u2192 confirm SYSTEM_NO_ROLL dump for program SAPMV45A",
+      "2. SM50 \u2192 identify work process with high Private Memory",
+      "3. SMEM \u2192 review extended memory distribution",
+      "4. RZ10 \u2192 increase em/initial_size_MB to 4096 in DEFAULT.PFL",
+      "5. SM50 \u2192 cancel affected work process (Process > Cancel with Core)",
+      "6. Monitor ST22 \u2014 no new SYSTEM_NO_ROLL dumps after restart"
+    ],
+    "summary": "SYSTEM_NO_ROLL resolved: em/initial_size_MB increased to 4096, work process restarted",
+    "resolved_at": "2026-03-15T05:05:03.845280"
+  },
+  {
+    "incident_id": "INC-002",
+    "error_code": "RFC_TIMEOUT",
+    "steps": [
+      "1. SM59 \u2192 select RFC_PROD \u2192 Connection Test",
+      "2. OS level: ping/telnet target host on port 3300",
+      "3. SM59 \u2192 Technical Settings \u2192 increase Timeout to 120s",
+      "4. Check target system load via SM50/SM66",
+      "5. Verify firewall rules for port 33<NN>"
+    ],
+    "summary": "RFC_TIMEOUT resolved: SM59 timeout increased to 120s, network path verified",
+    "resolved_at": "2026-03-15T05:05:04.669223"
+  },
+  {
+    "incident_id": "INC-001",
+    "error_code": "SYSTEM_NO_ROLL",
+    "steps": [
+      "1. ST22 \u2192 confirm SYSTEM_NO_ROLL dump for program SAPMV45A",
+      "2. SM50 \u2192 identify work process with high Private Memory",
+      "3. SMEM \u2192 review extended memory distribution",
+      "4. RZ10 \u2192 increase em/initial_size_MB to 4096 in DEFAULT.PFL",
+      "5. SM50 \u2192 cancel affected work process (Process > Cancel with Core)",
+      "6. Monitor ST22 \u2014 no new SYSTEM_NO_ROLL dumps after restart"
+    ],
+    "summary": "SYSTEM_NO_ROLL resolved: em/initial_size_MB increased to 4096, work process restarted",
+    "resolved_at": "2026-03-15T05:09:33.042200"
+  },
+  {
+    "incident_id": "INC-002",
+    "error_code": "RFC_TIMEOUT",
+    "steps": [
+      "1. SM59 \u2192 select RFC_PROD \u2192 Connection Test",
+      "2. OS level: ping/telnet target host on port 3300",
+      "3. SM59 \u2192 Technical Settings \u2192 increase Timeout to 120s",
+      "4. Check target system load via SM50/SM66",
+      "5. Verify firewall rules for port 33<NN>"
+    ],
+    "summary": "RFC_TIMEOUT resolved: SM59 timeout increased to 120s, network path verified",
+    "resolved_at": "2026-03-15T05:09:33.867248"
+  },
+  {
+    "incident_id": "INC-001",
+    "error_code": "SYSTEM_NO_ROLL",
+    "steps": [
+      "1. ST22 \u2192 confirm SYSTEM_NO_ROLL dump for program SAPMV45A",
+      "2. SM50 \u2192 identify work process with high Private Memory",
+      "3. SMEM \u2192 review extended memory distribution",
+      "4. RZ10 \u2192 increase em/initial_size_MB to 4096 in DEFAULT.PFL",
+      "5. SM50 \u2192 cancel affected work process (Process > Cancel with Core)",
+      "6. Monitor ST22 \u2014 no new SYSTEM_NO_ROLL dumps after restart"
+    ],
+    "summary": "SYSTEM_NO_ROLL resolved: em/initial_size_MB increased to 4096, work process restarted",
+    "resolved_at": "2026-03-15T05:13:01.342201"
+  },
+  {
+    "incident_id": "INC-002",
+    "error_code": "RFC_TIMEOUT",
+    "steps": [
+      "1. SM59 \u2192 select RFC_PROD \u2192 Connection Test",
+      "2. OS level: ping/telnet target host on port 3300",
+      "3. SM59 \u2192 Technical Settings \u2192 increase Timeout to 120s",
+      "4. Check target system load via SM50/SM66",
+      "5. Verify firewall rules for port 33<NN>"
+    ],
+    "summary": "RFC_TIMEOUT resolved: SM59 timeout increased to 120s, network path verified",
+    "resolved_at": "2026-03-15T05:13:02.176826"
+  },
+  {
+    "incident_id": "INC-001",
+    "error_code": "SYSTEM_NO_ROLL",
+    "steps": [
+      "1. ST22 \u2192 confirm SYSTEM_NO_ROLL dump for program SAPMV45A",
+      "2. SM50 \u2192 identify work process with high Private Memory",
+      "3. SMEM \u2192 review extended memory distribution",
+      "4. RZ10 \u2192 increase em/initial_size_MB to 4096 in DEFAULT.PFL",
+      "5. SM50 \u2192 cancel affected work process (Process > Cancel with Core)",
+      "6. Monitor ST22 \u2014 no new SYSTEM_NO_ROLL dumps after restart"
+    ],
+    "summary": "Runbook exactly matches, all steps verifiable",
+    "resolved_at": "2026-03-15T06:10:54.596526"
+  },
+  {
+    "incident_id": "INC-002",
+    "error_code": "RFC_TIMEOUT",
+    "steps": [
+      "1. SM59 \u2192 select RFC_PROD \u2192 Connection Test",
+      "2. OS level: ping/telnet target host on port 3300",
+      "3. SM59 \u2192 Technical Settings \u2192 increase Timeout to 120s",
+      "4. Check target system load via SM50/SM66",
+      "5. Verify firewall rules for port 33<NN>"
+    ],
+    "summary": "RFC connection timeout resolved by increasing timeout in SM59 and checking network connectivity.",
+    "resolved_at": "2026-03-15T06:16:11.214904"
+  },
+  {
+    "incident_id": "INC-003",
+    "error_code": "JOB_FAILED",
+    "steps": [
+      "1. Open SM37, find the job, click Spool to read the job log.",
+      "2. Note the exact error message and program name.",
+      "'3. Check SU53 for the job's background user \u2014 grant missing authorizations.'",
+      "4. Re-run the job manually via SM36 with the same parameters."
+    ],
+    "summary": "Runbook exactly matches, all steps verifiable.",
+    "resolved_at": "2026-03-15T06:19:39.606775"
+  },
+  {
+    "incident_id": "INC-001",
+    "error_code": "SYSTEM_NO_ROLL",
+    "steps": [
+      "1. ST22 \u2192 confirm SYSTEM_NO_ROLL dump for program SAPMV45A",
+      "2. SM50 \u2192 identify work process with high Private Memory",
+      "3. SMEM \u2192 review extended memory distribution",
+      "4. RZ10 \u2192 increase em/initial_size_MB to 4096 in DEFAULT.PFL",
+      "5. SM50 \u2192 cancel affected work process (Process > Cancel with Core)",
+      "6. Monitor ST22 \u2014 no new SYSTEM_NO_ROLL dumps after restart"
+    ],
+    "summary": "Runbook exactly matches, all steps verifiable",
+    "resolved_at": "2026-03-15T06:27:51.490768"
+  },
+  {
+    "incident_id": "INC-001",
+    "error_code": "SYSTEM_NO_ROLL",
+    "steps": [
+      "1. ST22 \u2192 confirm SYSTEM_NO_ROLL dump for program SAPMV45A",
+      "2. SM50 \u2192 identify work process with high Private Memory",
+      "3. SMEM \u2192 review extended memory distribution",
+      "4. RZ10 \u2192 increase em/initial_size_MB to 4096 in DEFAULT.PFL",
+      "5. SM50 \u2192 cancel affected work process (Process > Cancel with Core)",
+      "6. Monitor ST22 \u2014 no new SYSTEM_NO_ROLL dumps after restart"
+    ],
+    "summary": "No roll area available, increase em/initial_size_MB to resolve",
+    "resolved_at": "2026-03-15T07:09:35.705368"
+  },
+  {
+    "incident_id": "INC-002",
+    "error_code": "RFC_TIMEOUT",
+    "steps": [
+      "1. SM59 \u2192 select RFC_PROD \u2192 Connection Test",
+      "2. OS level: ping/telnet target host on port 3300",
+      "3. SM59 \u2192 Technical Settings \u2192 increase Timeout to 120s",
+      "4. Check target system load via SM50/SM66",
+      "5. Verify firewall rules for port 33<NN>"
+    ],
+    "summary": "RFC connection timeout resolved by increasing timeout in SM59 and checking network connectivity.",
+    "resolved_at": "2026-03-15T07:15:34.943526"
+  },
+  {
+    "incident_id": "INC-003",
+    "error_code": "JOB_FAILED",
+    "steps": [
+      "1. Open SM37, find the job, click Spool to read the job log.",
+      "2. Note the exact error message and program name.",
+      "'3. Check SU53 for the job's background user \u2014 grant missing authorizations.'",
+      "4. Re-run the job manually via SM36 with the same parameters."
+    ],
+    "summary": "Background Job Failure: Verify job log and re-run the job.",
+    "resolved_at": "2026-03-15T07:19:55.108558"
+  },
+  {
+    "incident_id": "INC-001",
+    "error_code": "SYSTEM_NO_ROLL",
+    "steps": [
+      "1. ST22 \u2192 confirm SYSTEM_NO_ROLL dump for program SAPMV45A",
+      "2. SM50 \u2192 identify work process with high Private Memory",
+      "3. SMEM \u2192 review extended memory distribution",
+      "4. RZ10 \u2192 increase em/initial_size_MB to 4096 in DEFAULT.PFL",
+      "5. SM50 \u2192 cancel affected work process (Process > Cancel with Core)",
+      "6. Monitor ST22 \u2014 no new SYSTEM_NO_ROLL dumps after restart"
+    ],
+    "summary": "Increased em/initial_size_MB and cancelled the affected work process.",
+    "resolved_at": "2026-03-15T09:04:17.824928"
+  },
+  {
+    "incident_id": "INC-002",
+    "error_code": "RFC_TIMEOUT",
+    "steps": [
+      "1. SM59 \u2192 select RFC_PROD \u2192 Connection Test",
+      "2. Check network connectivity: ping target host from OS level.",
+      "3. Verify the RFC user exists and is not locked in target system (SU01).",
+      "4. Increase timeout in SM59 > Technical Settings > Timeout (seconds).",
+      "5. Check target system load via SM50/SM66 \u2014 restart if overloaded."
+    ],
+    "summary": "RFC Connection Timeout - SM59",
+    "resolved_at": "2026-03-15T09:09:42.969578"
+  },
+  {
+    "incident_id": "INC-003",
+    "error_code": "JOB_FAILED",
+    "steps": [
+      "1. Open SM37, find the job, click Spool to read the job log.",
+      "2. Note the exact error message and program name.",
+      "'3. Check SU53 for the job's background user \u2014 grant missing authorizations.'",
+      "4. Re-run the job manually via SM36 with the same parameters."
+    ],
+    "summary": "Background Job Failure: Verify job log, check SU53, and re-run the job.",
+    "resolved_at": "2026-03-15T09:14:19.726121"
+  },
+  {
+    "incident_id": "INC-001",
+    "error_code": "SYSTEM_NO_ROLL",
+    "steps": [
+      "1. ST22 \u2192 confirm SYSTEM_NO_ROLL dump for program SAPMV45A",
+      "2. SM50 \u2192 identify work process with high Private Memory",
+      "3. SMEM \u2192 review extended memory distribution",
+      "4. RZ10 \u2192 increase em/initial_size_MB to 4096 in DEFAULT.PFL",
+      "5. SM50 \u2192 cancel affected work process (Process > Cancel with Core)",
+      "6. Monitor ST22 \u2014 no new SYSTEM_NO_ROLL dumps after restart"
+    ],
+    "summary": "Resolution: Increase em/initial_size_MB to 4096 in DEFAULT.PFL and cancel affected work process.",
+    "resolved_at": "2026-03-15T09:41:46.010356"
+  },
+  {
+    "incident_id": "INC-002",
+    "error_code": "RFC_TIMEOUT",
+    "steps": [
+      "1. SM59 \u2192 select RFC_PROD \u2192 Connection Test",
+      "2. Check network connectivity: ping target host from OS level.",
+      "3. Verify the RFC user exists and is not locked in target system (SU01).",
+      "4. Increase timeout in SM59 > Technical Settings > Timeout (seconds).",
+      "5. Check target system load via SM50/SM66 \u2014 restart if overloaded."
+    ],
+    "summary": "RFC connection timeout resolved by checking network connectivity, RFC user existence, and increasing timeout in SM59.",
+    "resolved_at": "2026-03-15T09:47:55.989070"
+  },
+  {
+    "incident_id": "INC-003",
+    "error_code": "JOB_FAILED",
+    "steps": [
+      "1. Open SM37, find the job, click Spool to read the job log.",
+      "2. Note the exact error message and program name.",
+      "'3. Check SU53 for the job's background user \u2014 grant missing authorizations.'",
+      "4. Re-run the job manually via SM36 with the same parameters."
+    ],
+    "summary": "Background Job Failure: Verify job log and re-run the job.",
+    "resolved_at": "2026-03-15T09:53:06.517874"
+  }
+]

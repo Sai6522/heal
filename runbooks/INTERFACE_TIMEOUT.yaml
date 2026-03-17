@@ -1,0 +1,24 @@
+error_code: INTERFACE_TIMEOUT
+title: SAP Integration Interface Timeout (CPI/PI/PO)
+category: INTERFACE
+symptoms:
+  - Message processing failed in SAP Integration Suite (CPI) or PI/PO
+  - HTTP 504 or connection timeout in message monitor
+  - Receiver adapter shows "Connection refused" or "Read timed out"
+root_cause: >
+  Integration message could not reach the target system within the configured
+  timeout. Causes: target system down, network firewall change, CPI iFlow
+  misconfiguration, or receiver system overloaded.
+remediation_steps:
+  - "1. SAP Integration Suite → Monitor → Message Processing → find failed message."
+  - "2. Check error details — note sender/receiver system and adapter type."
+  - "3. Test connectivity: ping/curl target endpoint from BTP or PI/PO server."
+  - "4. If HTTP adapter: increase timeout in iFlow → Receiver → Connection Timeout."
+  - "5. If SFTP adapter: verify SFTP server is reachable and credentials valid."
+  - "6. Check target system availability (SM50/SM66 if SAP target)."
+  - "7. Retry failed message from Message Monitor → Retry button."
+  - "8. If recurring: raise change request to increase adapter timeout permanently."
+auto_close_eligible: true
+references:
+  - "SAP Note 2600886"
+  - "SAP Integration Suite Help: Message Monitoring"

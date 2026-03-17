@@ -1,0 +1,23 @@
+error_code: IDOC_ERROR
+title: IDoc Posting Failure
+category: IDOC
+symptoms:
+  - IDoc status 51 (Application document not posted) in WE02/WE05
+  - Partner profile error in WE20
+  - Message type MATMAS/ORDERS/DESADV stuck in outbound queue
+root_cause: >
+  IDoc failed to post in the receiving system. Common causes: missing partner
+  profile, locked material/order, ALE distribution model mismatch, or
+  authorisation issue for the IDoc processing function module.
+remediation_steps:
+  - "1. WE02 → filter by status 51, note IDoc number and message type."
+  - "2. WE05 → open IDoc, read error text in Status Records tab."
+  - "3. WE20 → verify partner profile exists for the sending partner and message type."
+  - "4. If partner profile missing: create inbound parameter for message type."
+  - "5. BD87 → select failed IDocs → Reprocess (Execute)."
+  - "6. If authorisation error: SU53 for the IDoc background user, grant missing objects."
+  - "7. WE02 → confirm IDoc moves to status 53 (Application document posted)."
+auto_close_eligible: true
+references:
+  - "SAP Note 0000074141"
+  - "SAP Note 0000353597"
